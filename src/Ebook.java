@@ -14,6 +14,8 @@ public class Ebook extends Livro {
         return tamanhoAquivo;
     }
 
+    // Verifica se há espaço disponível antes de baixar.
+    // "size" é o espaço disponível em MB do usuário.
     public void baixar(double size) {
         if (getTamanhoArquivo() <= size){
             System.out.println("Baixando " + getTitulo() + " (" + tamanhoAquivo + "MB)...");
@@ -23,12 +25,10 @@ public class Ebook extends Livro {
         }
     }
 
+    // @Override sobrescreve o emprestar() de Livro.
+    // Ebook não tem estoque físico, então está sempre disponível.
     @Override
     public void emprestar() {
         System.out.println("Ebooks estão sempre disponíveis!");
-    }
-    @Override
-    public void devolver(){
-        System.out.println("Ebook devolvido");
-    }
+    } 
 }
