@@ -1,6 +1,6 @@
-# 📚 Sistema de Biblioteca — Java OOP
+# 📚 Sistema de Biblioteca Java — Orientação Objetos
 
-Projeto de estudo desenvolvido com o objetivo é praticar os principais pilares da **Orientação a Objetos** em Java: herança, encapsulamento, polimorfismo, classes abstratas e interfaces.
+Projeto de estudo desenvolvido com o objetivo de praticar os principais pilares da **Orientação a Objetos** em Java: herança, encapsulamento, polimorfismo e sobrescrita de métodos.
 
 ---
 
@@ -15,9 +15,24 @@ Projeto de estudo desenvolvido com o objetivo é praticar os principais pilares 
 
 ---
 
-### `Livro` — classe abstrata
+## Estrutura do projeto
 
-Base comum para todos os itens do acervo. Não pode ser instanciada diretamente — use `Ebook` ou `Revista`.
+```
+src/
+├── Livro.java      # Classe base — livro físico
+├── Ebook.java      # Subtipo: livro digital com tamanho em MB
+├── Revista.java    # Subtipo: revista, consultada só na biblioteca
+├── User.java       # Usuário da biblioteca
+└── Main.java       # Ponto de entrada — testes e demonstrações
+```
+
+---
+
+## Classes
+
+### `Livro` — classe base
+
+Base comum para todos os itens do acervo. `Ebook` e `Revista` herdam seus atributos e métodos.
 
 | Atributo | Tipo | Descrição |
 |---|---|---|
@@ -45,7 +60,7 @@ Representa um livro digital. Sobrescreve `emprestar()` pois está sempre dispon�
 
 | Método | Descrição |
 |---|---|
-| `baixar(double espacoDisponivel)` | Baixa o ebook se houver espaço suficiente |
+| `baixar(double size)` | Baixa o ebook se houver espaço suficiente |
 | `emprestar()` | Sempre disponível — sem estoque físico |
 | `devolver()` | Confirma devolução digital |
 
@@ -61,7 +76,6 @@ Representa uma revista física. Sobrescreve `emprestar()` pois só pode ser cons
 
 | Método | Descrição |
 |---|---|
-| `getEdicao()` | Retorna o número da edição |
 | `emprestar()` | Informa que a revista é de uso interno |
 
 ---
@@ -82,5 +96,3 @@ Representa um usuário da biblioteca. O atributo `meuLivro` é do tipo `Livro`, 
 | `pegarLivro(Livro livro)` | Chama `emprestar()` e atribui o item ao usuário |
 | `setMeuLivro(Livro livro)` | Troca o item atual do usuário |
 | `getMeuLivro()` | Retorna o item atual |
-
----
